@@ -1,0 +1,64 @@
+services:
+    # Gere et centralise le code d'édition de PDF
+    setNewFacture:
+        class: Ecommerce\EcommerceBundle\Service\GetFacture
+        arguments: ["@service_container"]
+
+    redirectionListener:
+        class: Ecommerce\EcommerceBundle\Listener\RedirectionListener
+        arguments: ["@service_container", "@session"]
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    
+    setNewReference:
+        class: Ecommerce\EcommerceBundle\Service\GetReference
+        arguments: ["@security.token_storage", "@doctrine.orm.entity_manager"]  
+
+    # Twig filter extension
+    tva:
+        class: Ecommerce\EcommerceBundle\Twig\Extension\TvaExtension
+        tags: ['twig.extension']
+
+    MontantTva:
+        class: Ecommerce\EcommerceBundle\Twig\Extension\MontantTvaExtension
+        tags: ['twig.extension']
+    
+
+    
+    #Ecommerce\EcommerceBundle\DataFixtures\ORM\LoadMedia:
+        #tags: ['doctrine.fixture.orm']
+    
+    #Ecommerce\EcommerceBundle\DataFixtures\ORM\LoadCategories:
+        #tags: ['doctrine.fixture.orm']
+
+    #Ecommerce\EcommerceBundle\DataFixtures\ORM\LoadTva:
+        #tags: ['doctrine.fixture.orm']
+    
+    #Ecommerce\EcommerceBundle\DataFixtures\ORM\LoadProduits:
+        #tags: ['doctrine.fixture.orm']
+    
+    #Ecommerce\EcommerceBundle\DataFixtures\ORM\LoadCommandes:
+        #tags: ['doctrine.fixture.orm']
+
+    #Utilisateur\UtilisateurBundle\DataFixtures\ORM\LoadUtilisateur:
+        #tags: ['doctrine.fixture.orm']
+
+    #Utilisateur\UtilisateurBundle\DataFixtures\ORM\LoadUtilisateursAdresses:
+        #tags: ['doctrine.fixture.orm']
+    
+    #Pages\PagesBundle\DataFixtures\ORM\LoadPages:
+        #tags: ['doctrine.fixture.orm']    
+    
+
+# arguments => nom des services
+# tags => définir quand le service va se déclencher, qd le listener va se declencher.
+#    ecommerce.example:
+#        class: Ecommerce\EcommerceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    # makes classes in OCPlatformBundle\DataFixtures\ORM\LoadCategory available to be used as services
+    # and have a tag that allows actions to type-hint services
+    # Fixtures services
+    
+
+    

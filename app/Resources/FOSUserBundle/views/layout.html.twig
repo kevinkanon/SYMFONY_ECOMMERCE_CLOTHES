@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+{# On surcharge les vue FOSUser par notre vue de base
+Ainsi le layout general de FOSUser extends de notre base.html.twig qui est notre layout general et incluera les vue de son bundle#}
+
+{% block body %}
+            {# objet dun autre tutoriel on y reiendra
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>#}
+<div class="container">
+    {# Message d'erreur #}
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+   
+{% endblock %}

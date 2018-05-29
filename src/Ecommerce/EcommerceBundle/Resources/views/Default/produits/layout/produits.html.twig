@@ -1,0 +1,63 @@
+{# src/Ecommerce/EcommerceBundle/Resources/views/Default/produits/layout/produits.html.twig #}
+
+{# Page d'accueil qui liste tous les produits #}
+
+{% extends '::base.html.twig' %} 
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="span3">
+            {% include '::modulesUsed/navigation.html.twig' %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% include 'UtilisateurBundle:Default:modulesUsed/utilisateurConnecte.html.twig' %}
+            {% else %}
+                {% include 'UtilisateurBundle:Default:modulesUsed/utilisateur.html.twig' %}  
+            {% endif %} 
+            {{ render(controller('EcommerceBundle:Panier:menu')) }}            
+        </div>
+
+
+        <div class="span9">
+            {% if produits|length !=0 %}
+            
+                <ul class="thumbnails">
+                    {# boucle sur les items #}
+                    {% for produit in produits %}
+
+                        <li class="span3">
+                            <div class="">
+                                <img src="{{ asset(produit.image.AssetPath) }}" alt="{{ produit.image.name }}" width="191" height="">
+                                <div class="caption">
+                                    <h4>{{ produit.nom }}</h4>
+                                    <p>{{ produit.prix|tva(produit.tva.multiplicate) }} €</p>
+                                    {# path('presentation') qui dirige vers la route presentation et affiche un seul produit #}
+                                    <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
+                                    {# possibilité de rajouter le produit dans le panier s'il n'existe pas encore dans la session panier #}
+                                    {% if panier[produit.id] is not defined %}
+                                        <a class="btn btn-success" href="{{ path('ajouter', { 'id' : produit.id}) }}">Ajouter au panier</a>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <div class="navigation">
+                    {{ knp_pagination_render(produits) }}
+                </div>
+                
+            {% else %}
+                Aucun produit  
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

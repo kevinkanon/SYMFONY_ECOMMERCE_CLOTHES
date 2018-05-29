@@ -1,0 +1,18 @@
+{# src/Ecommerce/EcommerceBundle/Resources/views/Default/Administration/Categories/layout/edit.html.twig #} 
+
+{% extends '::baseAdmin.html.twig' %} 
+
+{% block body -%}
+    <h1>Categories edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('adminCategories') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,23 @@
+{# src/Ecommerce/EcommerceBundle/Resources/views/Default/Administration/Produits/layout/new.html.twig #} 
+
+{% extends '::baseAdmin.html.twig' %} 
+
+{% block body -%}
+    <h1>Produits creation</h1>
+
+    {#<form action="{{ path('adminProduits_create', { 'id' : entity.id }) }}" method="POST" {{ form_enctype(edit_form) }}>
+        {{ form(form) }}
+    </form>#}
+
+    {{ form_start(form, {'action': path('adminProduits_create', { 'id' : entity.id }), 'method': 'POST', }) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('adminProduits') }}">
+                Retour à la liste
+            </a>
+        </li>
+    </ul>
+{% endblock %}

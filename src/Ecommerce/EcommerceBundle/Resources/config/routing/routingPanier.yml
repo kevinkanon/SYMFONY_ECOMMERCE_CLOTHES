@@ -1,0 +1,34 @@
+# // src/ Ecommerce/EcommerceBundle/Resources/config/routing/routingPanier.yml
+
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: EcommerceBundle:Panier:supprimer }
+
+ajouter:
+    path:     /ajouter/{id}
+    defaults: { _controller: EcommerceBundle:Panier:ajouter }
+
+panier:
+    path:     /
+    defaults: { _controller: EcommerceBundle:Panier:panier }
+
+livraison:
+    path:     /livraison
+    defaults: { _controller: EcommerceBundle:Panier:livraison }
+
+validation:
+    path:     /validation
+    defaults: { _controller: EcommerceBundle:Panier:validation }
+
+livraisonAdresseSuppression:
+    path:     /livraison/adresse/supression/{id}
+    defaults: { _controller: EcommerceBundle:Panier:adresseSuppression }
+
+
+
+
+
+
+
+
+

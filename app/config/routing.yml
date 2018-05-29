@@ -1,0 +1,20 @@
+#EcommerceBundle
+ecommerce:
+    resource: "@EcommerceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#PageBundle
+pages:
+    resource: "@PagesBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#UtilisateurBundles pas vraiment utilisé car ontilise les routes de fos user
+utilisateur:
+    resource: "@UtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+
+
+

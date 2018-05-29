@@ -1,0 +1,7 @@
+{# Listiing de toutes les catégories qui seront inclus par le controller dans le layout navigation.html.twig #}
+
+{% for categorie in categories %}
+    <li>
+        <a href="{{ path('categorieProduits', { 'categorie': categorie.id }) }}">{{ categorie.nom }}</a>
+    </li>
+{% endfor %}

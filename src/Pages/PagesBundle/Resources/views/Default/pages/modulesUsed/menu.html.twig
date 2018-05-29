@@ -1,0 +1,5 @@
+{% for page in pages %}
+    {# path('page') faisant appel à la route page du bundle PagesBundle avec les paramètres id de la route. 
+                    Séparé de EcommerceBundle qui contient les mentions légales #}
+    <li><a href="{{ path('page', { 'id' : page.id }) }}"> {{page.titre}} </a></li>
+{% endfor %}

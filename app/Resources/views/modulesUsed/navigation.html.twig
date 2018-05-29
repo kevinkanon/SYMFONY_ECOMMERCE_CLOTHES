@@ -1,0 +1,12 @@
+{# app/Resources/views/modulesUsed/naviagtion.html.twig #}
+
+{# Mis dans les dossier modulesUsed car ces fichiers seront inclus par d'autres vue et n'héritent de personne.#}
+
+<div class="well">
+    <ul class="nav nav-list">
+        <li class="nav-header">Nos produits</li>
+
+        {{ render(controller('EcommerceBundle:Categories:menu')) }}
+
+    </ul>
+</div>

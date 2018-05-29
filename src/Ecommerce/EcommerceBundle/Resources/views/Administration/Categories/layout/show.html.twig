@@ -1,0 +1,34 @@
+{# src/Ecommerce/EcommerceBundle/Resources/views/Default/Administration/Categories/layout/show.html.twig #} 
+
+{% extends '::baseAdmin.html.twig' %} 
+
+{% block body -%}
+    <h1>Categories</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('adminCategories') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('adminCategories_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

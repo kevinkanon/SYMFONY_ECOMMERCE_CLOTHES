@@ -1,0 +1,17 @@
+{# src/Ecommerce/EcommerceBundle/Resources/views/Default/Administration/Categories/layout/new.html.twig #} 
+
+{% extends '::baseAdmin.html.twig' %} 
+
+{% block body -%}
+    <h1>Création de catégories</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('adminCategories') }}">
+            retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}
